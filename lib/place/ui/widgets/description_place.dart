@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'models/place_description.dart';
-import 'widgets/stars_row.dart';
-import 'widgets/gradient_button.dart';
+import '../../model/place_description.dart';
+import '../../../widgets/stars_row.dart';
+import '../../../widgets/gradient_button.dart';
 
 class DescriptionPlace extends StatelessWidget{
 

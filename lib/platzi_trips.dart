@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'views/home_trips.dart';
-import 'views/search.dart';
-import 'views/profile.dart';
+import 'place/ui/screens/home_trips.dart';
+import 'place/ui/screens/search.dart';
+import 'user/ui/screens/profile.dart';
 
 class PlatziTrips extends StatefulWidget {
   @override

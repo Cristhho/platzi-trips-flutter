@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'review_detail.dart';
-import 'package:platzi_trips/models/user_review.dart';
+import 'package:platzi_trips/place/model/user_review.dart';
 
 class Review extends StatelessWidget {
 
