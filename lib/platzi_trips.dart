@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+
+import 'user/bloc/bloc_user.dart';
 import 'place/ui/screens/home_trips.dart';
 import 'place/ui/screens/search.dart';
 import 'user/ui/screens/profile.dart';
@@ -17,7 +20,10 @@ class _PlatziTrips extends State<PlatziTrips> {
   final List<Widget> widgetsChildren = [
     HomeTrips(),
     Search(),
-    Profile()
+    BlocProvider<UserBloc>(
+      bloc: UserBloc(),
+      child: Profile(),
+    )
   ];
 
   void onTapTapped(int index) {

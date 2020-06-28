@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:platzi_trips/user/bloc/bloc_user.dart';
 import 'platzi_trips.dart';
+import 'user/ui/screens/signin.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          home: PlatziTrips()
+          home: SignIn()
       ),
       bloc: UserBloc()
     );
