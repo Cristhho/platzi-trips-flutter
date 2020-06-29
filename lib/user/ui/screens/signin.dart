@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import '../../model/user.dart';
 import '../../../platzi_trips.dart';
-
 import '../../bloc/bloc_user.dart';
 import '../../../widgets/button_green.dart';
 import '../../../widgets/gradient_back.dart';
@@ -58,9 +58,15 @@ class _SignIn extends State<SignIn> {
               ButtonGreen(text: "Login with Gmail",
                 onPressed: () {
                   userBloc.signOut();
-                  userBloc.signIn().then((FirebaseUser user) =>
-                      print("El usuario es ${user.displayName}")
-                  );
+                  userBloc.signIn().then((FirebaseUser user) {
+                    User myUser = User(
+                      uid: user.uid,
+                      name: user.displayName,
+                      email: user.email,
+                      photoUrl: user.photoUrl
+                    );
+                    userBloc.updateUserData(myUser);
+                  });
                 },
                 width: 300.0,
                 height: 50.0,
