@@ -57,6 +57,7 @@ class _SignIn extends State<SignIn> {
               ),
               ButtonGreen(text: "Login with Gmail",
                 onPressed: () {
+                  userBloc.signOut();
                   userBloc.signIn().then((FirebaseUser user) =>
                       print("El usuario es ${user.displayName}")
                   );

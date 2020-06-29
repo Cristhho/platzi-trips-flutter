@@ -14,7 +14,6 @@ class Profile extends StatelessWidget {
           children: <Widget>[
             ProfileHeader(),
             ProfilePlacesList()
-
           ],
         ),
       ],

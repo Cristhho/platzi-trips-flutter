@@ -24,7 +24,7 @@ class ButtonsBar extends StatelessWidget {
                 true, Icons.exit_to_app, 20.0,
                 Color.fromRGBO(255, 255, 255, 0.6),
                 () {
-                      userBloc.signOut();
+                  userBloc.signOut();
                 }
             ),
           ],
