@@ -43,16 +43,21 @@ class _SignIn extends State<SignIn> {
       body: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          GradientBack(height: null, title: ""),
+          GradientBack(title: ""),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Welcome\nThis is your travel app",
-                style: TextStyle(
-                  fontSize: 37.0,
-                  fontFamily: "Lato",
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
+              Flexible(
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Text("Welcome\nThis is your travel app",
+                    style: TextStyle(
+                        fontSize: 37.0,
+                        fontFamily: "Lato",
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                    ),
+                  )
                 ),
               ),
               ButtonGreen(text: "Login with Gmail",

@@ -9,8 +9,16 @@ class GradientBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    if(height == null)
+      height = screenHeight;
+
     return Container(
       height: this.height,
+      width: screenWidth,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -23,7 +31,19 @@ class GradientBack extends StatelessWidget {
           tileMode: TileMode.clamp
         )
       ),
-      child: Text(
+      child: FittedBox(
+        fit: BoxFit.none,
+        alignment: Alignment(-1.5, -0.8),
+        child: Container(
+          width: screenHeight,
+          height: screenHeight,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(0, 0, 0, 0.05),
+            borderRadius: BorderRadius.circular(screenHeight / 2)
+          ),
+        ),
+      ),
+      /*Text(
         this.title,
         style: TextStyle(
           color: Colors.white,
@@ -31,8 +51,7 @@ class GradientBack extends StatelessWidget {
           fontFamily: 'Lato',
           fontWeight: FontWeight.w800
         ),
-      ),
-      alignment: Alignment(-0.9, -0.6),
+      ),*/
     );
   }
   
