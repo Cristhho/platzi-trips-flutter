@@ -41,6 +41,7 @@ class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen> with A
         this.icon
       ),
       onPressed: onFavPressed,
+      heroTag: null,
     );
   }
 
