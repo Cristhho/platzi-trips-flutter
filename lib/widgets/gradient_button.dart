@@ -4,8 +4,11 @@ class GradientButton extends StatelessWidget {
 
   final Gradient gradient;
   final String text;
+  final VoidCallback onPressed;
 
-  GradientButton(this.gradient, this.text);
+  GradientButton({
+    this.gradient, this.text, this.onPressed
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,7 @@ class GradientButton extends StatelessWidget {
         right: 20.0
       ),
       child: InkWell(
-        onTap: () {
-          Scaffold.of(context).showSnackBar(
-            SnackBar(content: Text('Navegando'))
-          );
-        },
+        onTap: onPressed,
         child: Container(
           height: 50.0,
           width: 180.0,

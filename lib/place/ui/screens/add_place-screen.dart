@@ -1,5 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips/place/model/place.dart';
+import '../../../user/bloc/bloc_user.dart';
+import '../../../widgets/gradient_button.dart';
 import '../widgets/card_image.dart';
 import '../widgets/text_input_location.dart';
 import '../../../widgets/text_input.dart';
@@ -17,11 +21,14 @@ class AddPlaceScreen extends StatefulWidget {
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
+
+  final _controllerTitlePlace = TextEditingController();
+  final _controllerDescriptionPlace = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
 
-    final _controllerTitlePlace = TextEditingController();
-    final _controllerDescriptionPlace = TextEditingController();
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
     return Scaffold(
       body: Stack(
@@ -84,6 +91,32 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   child: TextInputLocation(
                     hintText: "Add location",
                     icon: Icons.location_on,
+                  ),
+                ),
+                Container(
+                  width: 70.0,
+                  child: GradientButton(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF4268D3),
+                        Color(0xFF584CD1)
+                      ],
+                      begin: FractionalOffset(0.2, 0.0),
+                      end: FractionalOffset(1.0, 0.6),
+                      stops: [0.0, 0.6],
+                      tileMode: TileMode.clamp
+                    ),
+                    text: "Add place",
+                    onPressed: () {
+                      userBloc.updatePlace(Place(
+                        name: _controllerTitlePlace.text,
+                        description: _controllerDescriptionPlace.text,
+                        likes: 0,
+                      )).whenComplete(() {
+                        print("Place added");
+                        Navigator.pop(context);
+                      });
+                    },
                   ),
                 )
               ],

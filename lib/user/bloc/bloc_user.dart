@@ -3,6 +3,7 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import '../model/user.dart';
 import '../repository/cloud_firestore_repository.dart';
 import '../repository/auth_repository.dart';
+import '../../place/model/place.dart';
 
 class UserBloc implements Bloc {
 
@@ -22,6 +23,8 @@ class UserBloc implements Bloc {
   final _cloudFirestoreRepository = CloudFirestoreRepository();
 
   void updateUserData(User user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
+
+  Future<void> updatePlace(Place place) => _cloudFirestoreRepository.updatePlace(place);
 
   @override
   void dispose() {
