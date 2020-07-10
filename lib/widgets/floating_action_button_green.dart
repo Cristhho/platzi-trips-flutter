@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class FloatingActionButtonGreen extends StatefulWidget {
+
+  final IconData icon;
+  final VoidCallback onPressed;
+
+
+  FloatingActionButtonGreen({this.icon, this.onPressed});
+
   @override
   State<StatefulWidget> createState() {
     return _FloatingActionButtonGreen();
@@ -20,17 +27,7 @@ class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen> with A
     super.initState();
     this.icon = Icons.favorite_border;
   }
-
-  void onFavPressed() {
-    setState(() {
-      if(this.icon == Icons.favorite_border) {
-        this.icon = Icons.favorite;
-      } else {
-        this.icon = Icons.favorite_border;
-      }
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -38,9 +35,9 @@ class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen> with A
       mini: true,
       tooltip: 'Favorite',
       child: Icon(
-        this.icon
+        widget.icon
       ),
-      onPressed: onFavPressed,
+      onPressed: widget.onPressed,
       heroTag: null,
     );
   }
