@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "168497599547-t8e5dgsli2nljrg4490j800peq9sl774.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cristhdev.platzi_trips",
+            "certificate_hash": "321a242bfb712d84600d96eed19e52684ee24473"
+          }
+        },
+        {
           "client_id": "168497599547-7hima0fqm3sp3ngd746ihh1kvbfs9oq8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -38,6 +46,13 @@
             {
               "client_id": "168497599547-786goa4r34shnm84o043l8bd4kj8eu3d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "168497599547-0cb8m9mhemjqjdtj3n54mt91ibkok6hu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cristhdev.platzitrips"
+              }
             }
           ]
         }
