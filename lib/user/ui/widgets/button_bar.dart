@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../place/ui/screens/add_place-screen.dart';
 import '../../bloc/bloc_user.dart';
 import 'circle_button.dart';
@@ -24,9 +25,15 @@ class ButtonsBar extends StatelessWidget {
                 false, Icons.add, 40.0,
                 Color.fromRGBO(255, 255, 255, 1),
                 () {
-                  File image;
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) => AddPlaceScreen(image: image)));
+                  ImagePicker picker = ImagePicker();
+                  picker.getImage(source: ImageSource.camera)
+                      .then((image) {
+                        if(image != null) {
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (BuildContext context) => AddPlaceScreen(image: File(image.path))));
+                        }
+                      })
+                      .catchError((onError) => print(onError));
                 }
             ),
             CircleButton(
