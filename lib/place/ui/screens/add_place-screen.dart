@@ -108,13 +108,27 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     ),
                     text: "Add place",
                     onPressed: () {
-                      userBloc.updatePlace(Place(
-                        name: _controllerTitlePlace.text,
-                        description: _controllerDescriptionPlace.text,
-                        likes: 0,
-                      )).whenComplete(() {
-                        print("Place added");
-                        Navigator.pop(context);
+                      userBloc.currentUser.then((user) {
+                        if(user != null) {
+                          String uid = user.uid;
+                          String path = "$uid/${DateTime.now().toString()}.jpg";
+                          userBloc.uploadFile(path, widget.image)
+                              .then((uploadTask) {
+                                uploadTask.onComplete.then((snapshot) {
+                                  snapshot.ref.getDownloadURL().then((imageUrl) {
+                                    userBloc.updatePlace(Place(
+                                      name: _controllerTitlePlace.text,
+                                      description: _controllerDescriptionPlace.text,
+                                      likes: 0,
+                                      urlImage: imageUrl
+                                    )).whenComplete(() {
+                                      print("Place added");
+                                      Navigator.pop(context);
+                                    });
+                                  });
+                                });
+                          });
+                        }
                       });
                     },
                   ),

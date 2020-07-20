@@ -32,7 +32,8 @@ class CloudFirestoreAPI {
         "name": place.name,
         "description": place.description,
         "likes": place.likes,
-        "userOwner": userRef
+        "userOwner": userRef,
+        "imageUrl": place.urlImage
       });
     });
   }
