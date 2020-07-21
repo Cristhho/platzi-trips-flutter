@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import '../../model/user.dart';
 import '../../bloc/bloc_user.dart';
 
 class ProfilePlacesList extends StatelessWidget {
 
   UserBloc userBloc;
+  User user;
+
+  ProfilePlacesList(this.user);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class ProfilePlacesList extends StatelessWidget {
           bottom: 10.0
       ),
       child: StreamBuilder(
-          stream: userBloc.placesStream,
+          stream: userBloc.myPlacesListStream(user.uid),
           builder: (context, snapshot) {
             switch(snapshot.connectionState) {
               case ConnectionState.waiting:
