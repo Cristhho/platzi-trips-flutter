@@ -32,9 +32,7 @@ class CardImage extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: imagePath.contains("assets")?
-            AssetImage(imagePath) :
-            FileImage(File(imagePath))
+          image: NetworkImage(imagePath)
         ),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         shape: BoxShape.rectangle,

@@ -11,6 +11,7 @@ import '../model/user.dart';
 import '../repository/cloud_firestore_repository.dart';
 import '../repository/auth_repository.dart';
 import '../../place/model/place.dart';
+import '../../place/ui/widgets/card_image.dart';
 
 class UserBloc implements Bloc {
 
@@ -43,7 +44,7 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> get placesStream => placesListStream;
   List<ProfilePlace> buildPlaces(List<DocumentSnapshot> places)
       => _cloudFirestoreRepository.buildPlaces(places);
-
+  List<CardImage> homePlaces(List<DocumentSnapshot> places) => _cloudFirestoreRepository.homePlaces(places);
   Stream<QuerySnapshot> myPlacesListStream(String uid)
       => Firestore.instance.collection(CloudFirestoreAPI().PLACES)
           .where("userOwner", isEqualTo:
