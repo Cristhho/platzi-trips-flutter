@@ -44,12 +44,16 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> get placesStream => placesListStream;
   List<ProfilePlace> buildPlaces(List<DocumentSnapshot> places)
       => _cloudFirestoreRepository.buildPlaces(places);
-  List<CardImage> homePlaces(List<DocumentSnapshot> places) => _cloudFirestoreRepository.homePlaces(places);
+  List<Place> homePlaces(List<DocumentSnapshot> places, User user)
+      => _cloudFirestoreRepository.homePlaces(places, user);
   Stream<QuerySnapshot> myPlacesListStream(String uid)
       => Firestore.instance.collection(CloudFirestoreAPI().PLACES)
           .where("userOwner", isEqualTo:
             Firestore.instance.document("${CloudFirestoreAPI().USERS}/$uid"))
           .snapshots();
+
+  Future likePlace(Place place, String uid)
+      => _cloudFirestoreRepository.likePlace(place, uid);
 
   @override
   void dispose() {

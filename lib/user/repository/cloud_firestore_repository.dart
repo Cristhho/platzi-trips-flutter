@@ -13,5 +13,7 @@ class CloudFirestoreRepository {
   Future<void> updatePlace(Place place) => _cloudFirestoreAPI.updatePlace(place);
 
   List<ProfilePlace> buildPlaces(List<DocumentSnapshot> places) => _cloudFirestoreAPI.buildPlaces(places);
-  List<CardImage> homePlaces(List<DocumentSnapshot> places) => _cloudFirestoreAPI.homePlaces(places);
+  List<Place> homePlaces(List<DocumentSnapshot> places, User user)
+      => _cloudFirestoreAPI.homePlaces(places, user);
+  Future likePlace(Place place, String uid) => _cloudFirestoreAPI.likePlace(place, uid);
 }

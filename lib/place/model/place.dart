@@ -8,11 +8,14 @@ class Place {
   String description;
   String urlImage;
   int likes;
+  bool liked;
 
   Place({
     @required this.name,
     @required this.description,
     @required this.urlImage,
-    this.likes
+    this.likes,
+    this.liked,
+    this.id
   });
 }
