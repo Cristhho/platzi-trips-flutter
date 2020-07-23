@@ -72,7 +72,8 @@ class _CardImageList extends State<CardImageList> {
             icon: place.liked ? iconDataLiked : iconDataLike,
             onPressedFabIcon: () {
               setLiked(place);
-            }
+            },
+            internet: true,
           );
         }).toList()
     );
