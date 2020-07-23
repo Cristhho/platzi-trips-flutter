@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,7 +12,6 @@ import '../model/user.dart';
 import '../repository/cloud_firestore_repository.dart';
 import '../repository/auth_repository.dart';
 import '../../place/model/place.dart';
-import '../../place/ui/widgets/card_image.dart';
 
 class UserBloc implements Bloc {
 
@@ -55,9 +55,14 @@ class UserBloc implements Bloc {
   Future likePlace(Place place, String uid)
       => _cloudFirestoreRepository.likePlace(place, uid);
 
+  StreamController<Place> placeSelectedStreamController =
+      StreamController<Place>.broadcast();
+  Stream<Place> get placeSelectedStream => placeSelectedStreamController.stream;
+  StreamSink<Place> get placeSelectedSink =>  placeSelectedStreamController.sink;
+
   @override
   void dispose() {
-
+    placeSelectedStreamController.close();
   }
 
 }
